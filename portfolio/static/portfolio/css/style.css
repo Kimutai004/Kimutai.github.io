@@ -102,7 +102,7 @@ nav ul li:hover {
     font-family: 'Inter';
     font-weight: '700';
     word-wrap: 'break-word';
-    margin-top: 20px;
+    margin-top: 30px;
 }
 .about .row {
     display: flex;
@@ -160,71 +160,112 @@ nav ul li:hover {
     height: 3661;
     background: black
 }
-.projects h2{
-    width: 122;
-    text-align: center;
-    color: rgb(0, 0, 0);
-    font-size: 20;
-    font-family: 'Inter';
-    font-weight: 700;
-    word-wrap: break-word;
-    margin-top: 20px;
+/* General styles for the projects section */
+#projects {
+    background-color: #f8f8f8; /* Light background for the section */
+    padding: 40px 20px; /* Spacing around the section */
 }
-.projects .column{
-    display: flex; /* Use flexbox for the column layout */
-    flex-direction: column; /* Arrange items in a column */
+
+.projects h2 {
+    text-align: center;
+    color: #333; /* Darker text color */
+    font-size: 28px; /* Increased font size for heading */
+    font-family: 'Inter', sans-serif; /* Using Inter font */
+    font-weight: 700; /* Bold weight */
+    margin-bottom: 30px; /* Space below the heading */
+}
+
+.projects .column {
+    display: flex; /* Flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
     align-items: center; /* Center items horizontally */
-    justify-content: center; /* Center items vertically in the column */
-    width: 100%; /* Ensure full width of the parent */
+    gap: 20px; /* Space between items */
 }
+
+/* Project details container */
 .project-dets {
-    width: 800px; /* Set width of the project details container */
-    height: 300px; /* Set height of the project details container */
-    background: #D9D9D9; /* Background color */
+    width: 100%; /* Full width on small screens */
+    max-width: 800px; /* Max width for larger screens */
+    background: #ffffff; /* White background for projects */
     border-radius: 10px; /* Rounded corners */
-    display: flex; /* Use flexbox for inner layout */
-    align-items: center; /* Center items vertically */
-    margin: 10px 0; /* Space between project items */
-    justify-content: center; /* Center items horizontally */
-    text-align: center; /* Center text inside the project details */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    display: flex; /* Flexbox for inner layout */
+    flex-direction: row; /* Default to row layout */
+    align-items: flex-start; /* Align items at the start */
+    padding: 20px; /* Inner padding */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition effects */
 }
 
-.project-dets.left {
-    flex-direction: row; /* Align items in a row for left-aligned */
+/* Hover effect for project details */
+.project-dets:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
 }
 
-.project-dets.right {
-    flex-direction: row-reverse; /* Align items in a row in reverse for right-aligned */
-}
 
+/* Title and paragraph styles */
 .project-dets h3 {
-    text-align: center;
-    color: black;
-    font-size: 15px; /* Corrected to px */
-    font-family: Inter;
-    font-weight: 700;
-    word-wrap: break-word;
-    flex: 1; /* Allow h3 to grow */
+    color: #333; /* Dark text color for titles */
+    font-size: 20px; /* Increased font size for titles */
+    font-family: 'Inter', sans-serif; /* Using Inter font */
+    font-weight: 600; /* Medium weight */
+    margin-bottom: 10px; /* Space below titles */
 }
 
 .project-dets p {
-    color: black; /* Corrected color */
-    font-size: 15px; /* Corrected to px */
-    font-family: Inter;
-    font-weight: 700;
-    word-wrap: break-word;
-    flex: 2; /* Allow paragraph to grow */
+    color: #555; /* Darker grey for paragraph text */
+    font-size: 16px; /* Font size for paragraphs */
+    font-family: 'Inter', sans-serif; /* Using Inter font */
+    flex: 1; /* Allow paragraph to grow */
     margin: 0 10px; /* Space around the paragraph */
 }
 
+/* Image styles */
 .project-dets img {
-    width: 300px; /* Set image width */
-    height: 175px; /* Set image height */
-    background: linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%);
-    border-radius: 10px; /* Optional: Rounded corners for images */
-    margin-left: 10px; /* Space between the image and text */
-    margin-right: 10px; /* Space between the image and text */
+    width: 100%; /* Responsive full width */
+    max-width: 250px; /* Max width for images */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners for images */
 }
+
+/* Media Queries for Responsive Design */
+@media (max-width: 800px) {
+    .project-dets {
+        flex-direction: column; /* Stack content vertically */
+        padding: 15px; /* Adjust padding */
+        align-items: center; /* Center items in column layout */
+    }
+
+    .project-dets img {
+        max-width: 100%; /* Full width for images */
+        height: auto; /* Maintain aspect ratio */
+        margin-bottom: 15px; /* Space below images */
+    }
+
+    .project-dets h3 {
+        order: 1; /* Ensure title appears after the image */
+        margin-bottom: 5px; /* Adjust margin for better spacing */
+    }
+
+    .project-dets p {
+        order: 2; /* Ensure paragraph appears after the image */
+    }
+}
+
+@media (max-width: 480px) {
+    .projects h2 {
+        font-size: 24px; /* Smaller font size for headings */
+    }
+
+    .project-dets h3 {
+        font-size: 18px; /* Smaller font size for project titles */
+    }
+
+    .project-dets p {
+        font-size: 14px; /* Smaller font size for project descriptions */
+    }
+}
+
 
 .experience h2{
     width: 122;
@@ -277,87 +318,79 @@ nav ul li:hover {
     font-size: 16px; /* Adjusts font size */
 }
 .contact {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center the items horizontally */
+    text-align: center; /* Center the text inside */
+    margin: 20px 0; /* Add some margin for spacing */
 }
 
-.contact h2 {
-    width: 122;
-    text-align: center;
-    color: rgb(0, 0, 0);
-    font-size: 20;
-    font-family: 'Inter';
-    font-weight: 700;
-    word-wrap: break-word;
-    margin-top: 20px;
+.contact-container {
+    display: flex; /* Align form and contact details side by side */
+    justify-content: space-between; /* Space between the form and contact details */
+    width: 100%; /* Full width */
+    max-width: 800px; /* Maximum width for the container */
+    margin: 0 auto; /* Center the container */
 }
 
 .contact-form {
-    display: flex;
-    flex-direction: column;
+    width: 50%; /* Set width for the form */
+    margin-right: 20px; /* Space between form and contact details */
 }
 
+.contact-details {
+    width: 50%; /* Set width for contact details */
+    text-align: left; /* Left align text in contact details */
+    background: #D9D9D9; /* Background color */
+    padding: 20px; /* Padding for contact details */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Optional: Additional styling for form and inputs */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 15px; /* Space between form fields */
 }
 
 .form-group label {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 5px;
-    display: block;
-    text-align: left;
+    display: block; /* Block label for better alignment */
 }
 
-.form-group input, .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    transition: border-color 0.3s ease;
+.form-group input,
+.form-group textarea {
+    width: 100%; /* Full width for inputs */
+    padding: 10px; /* Padding inside inputs */
+    border-radius: 5px; /* Rounded corners for inputs */
+    border: 1px solid #ccc; /* Border for inputs */
 }
 
-.form-group input:focus, .form-group textarea:focus {
-    border-color: #fa4a2b;
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column; /* Stack form and contact details vertically */
+        align-items: center; /* Center items horizontally */
+    }
+
+    .contact-form,
+    .contact-details {
+        width: 100%; /* Full width on smaller screens */
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 20px; /* Add bottom margin for spacing */
+    }
 }
 
-textarea {
-    resize: vertical; /* Allows the user to resize the height of the textarea */
+@media (max-width: 480px) {
+    .contact {
+        padding: 10px; /* Add padding to the contact section */
+    }
+
+    .contact-details {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
 }
 
-button[type="submit"] {
-    padding: 12px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #007BFF;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
-    background-color: #ef2323;
-}
 .experience {
     position: relative; /* Allow positioning of child elements */
     text-align: center; /* Center the title */
-}
-
-.line6 {
-    width: 4px; /* Width of the vertical line */
-    height: 200px; /* Height of the line */
-    border-left: 4px solid black; /* Left border to create the line */
-    position: absolute; /* Positioning relative to the experience section */
-    left: 50%; /* Center the line horizontally */
-    transform: translateX(-50%); /* Adjust to truly center */
 }
 
 .boxes {
@@ -379,17 +412,6 @@ button[type="submit"]:hover {
     align-items: center; /* Center content horizontally */
 }
 
-.left-box {
-    position: absolute; /* Position absolutely to allow for diagonal placement */
-    left: 30%; /* Adjust as needed for positioning */
-    top: 60px; /* Adjust for vertical positioning */
-}
-
-.right-box {
-    position: absolute; /* Position absolutely to allow for diagonal placement */
-    right: 30%; /* Adjust as needed for positioning */
-    top: 60px; /* Adjust for vertical positioning */
-}
 .experience {
     display: flex; /* Use flexbox for layout */
     flex-direction: column; /* Stack items vertically */
@@ -398,33 +420,81 @@ button[type="submit"]:hover {
     margin: 20px 0; /* Add some margin for spacing */
 }
 
-.experience .column {
-    display: flex; /* Use flexbox for the column layout */
-    flex-direction: column; /* Stack experience boxes vertically */
-    align-items: center; /* Center items horizontally */
+.line6 {
+    width: 4px;
+    height: 200px;
+    border-left: 4px solid black;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 100px;
 }
 
-.exp-dets {
-    width: 800px; /* Set width of the experience details container */
-    height: 300px; /* Set height of the experience details container */
+.exp-row {
+    margin-top: 30px;
+    display: flex; /* Use flexbox for the row layout */
+    justify-content: space-between; /* Space out columns */
+    width: 100%; /* Full width to accommodate all columns */
+    position: relative; /* Relative positioning for the line */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.exp-row .column {
+    width: 300px; /* Set width for each column */
+    margin: 0 20px; /* Margin for spacing */
     background: #D9D9D9; /* Background color */
     border-radius: 10px; /* Rounded corners */
-    display: flex; /* Use flexbox for inner layout */
-    align-items: center; /* Center items vertically */
-    justify-content: center; /* Center items horizontally */
-    text-align: center; /* Center text inside the experience details */
-    margin: 10px 0; /* Space between experience items */
-    padding: 20px; /* Add padding for better spacing inside */
+    padding: 20px; /* Padding inside the boxes */
+    position: relative; /* For z-index manipulation if needed */
 }
 
-.exp-dets h3 {
+.left {
+    margin-right: auto; /* Push left columns to the left */
+}
+
+.right {
+    margin-left: auto; /* Push right columns to the right */
+}
+
+/* Optional: Add some styling for the header and paragraphs */
+.exp-row .column h3 {
     margin: 0; /* Remove default margin for heading */
     font-size: 20px; /* Font size for the heading */
 }
 
-.exp-dets p {
+.exp-row .column p {
     margin: 5px 0; /* Space between paragraphs */
     font-size: 16px; /* Font size for paragraphs */
 }
 
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .exp-row {
+        flex-direction: column; /* Stack columns vertically on small screens */
+        align-items: center; /* Center items */
+    }
+
+    .exp-row .column {
+        width: 100%; /* Full width for columns on small screens */
+        margin: 10px 0; /* Margin for spacing */
+    }
+
+    .line6 {
+        height: 100px; /* Adjust line height on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .line6 {
+        height: 80px; /* Further adjust line height for very small screens */
+    }
+
+    .exp-row .column h3 {
+        font-size: 18px; /* Smaller font size for headings */
+    }
+
+    .exp-row .column p {
+        font-size: 14px; /* Smaller font size for paragraphs */
+    }
+}
 
