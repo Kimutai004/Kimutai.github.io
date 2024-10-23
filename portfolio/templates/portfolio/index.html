@@ -1,96 +1,212 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     {% load static %}
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
-</html>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        html {
+            scroll-behavior: smooth; /* Enables smooth scrolling */
+        }
+    </style>
+</head>
 <body>
-    <section>
+    <section id="home">
         <div class="line1"></div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Experince</a></li>
-                <li><a href="#">Skills</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <div class="intro">
             <h1>Hi<br>
                 I'm <span>Peter Kimutai Kiptoo</span></h1>
             <p>Full-Stack Software Engineer</p>
-            <a href="#">Contact Me</a>
+            <a href="#contact">Contact Me</a>
         </div>
-
-        <div class="row"></div>
-            <button class="cvbutton">
+        <button class="cvbutton">
             <a href="#">Download CV</a>
-            </button>
-            <button class="contact">
-            <a href="#">Contact Me</a>
-            </button>
-            <img src="{{ MEDIA_URL }}Github.png" alt="Description of Image">
-            <img src="{{ MEDIA_URL }}LinkedIn.png" alt="Description of Image">
-
-        </div>
-
+        </button>
+        <button class="contacts">
+            <a href="#contact">Contact Me</a>
+        </button>
+        {% load static %}
+        <img src="{% static 'LinkedIn.png' %}">
+        <img src="{% static 'GitHub.png' %}">
     </section>
-    <div class="rectangle8">
 
 
-    </div>
 
-    <section>
+    <section id="about">
         <div class="about">
             <div class="line3"></div>
             <h2>About Me</h2>
             <div class="row">
-                <img src="{{ MEDIA_URL }}Github.png" alt="Description of Image" srcset="">
-            <p>I am a Full-Stack Software Engineer with a passion for developing web applications. I have experience in developing web applications using Django, Flask, and React. I am also proficient in using Git for version control and have experience in deploying applications to Heroku and Netlify. I am a fast learner and I am always eager to learn new technologies.I’m a Full -stack developer with expertie in TypeScript, React, NextJs, NodeJs and Dtabase  technologies (MongoDB, MYSQL, Firebase, MSSQL and PostgreSQL) utilizing PRISMA for efficient data access. 
-                proven ability to deliver user-centered web applications with a focus on intuitive experiences and user interaction
-                
-                Seeking for web developmentopportunities where I can leverage my skills to create meaningful connections between Products and Users
-                
-                So if you are interested, 
-                
-                Contact me</p>
+                <img src="{% static 'Ellipse 1.png' %}">
+                <p>I’m a Full -stack developer with expertie in TypeScript, React, NextJs, NodeJs and Dtabase  technologies (MongoDB, MYSQL, Firebase, MSSQL and PostgreSQL) utilizing PRISMA for efficient data access. 
+                    proven ability to deliver user-centered web applications with a focus on intuitive experiences and user interaction
+                    
+                    Seeking for web developmentopportunities where I can leverage my skills to create meaningful connections between Products and Users
+                    
+                    So if you are interested, 
+                    
+                    Contact me</p>
             </div>
         </div>
     </section>
-    <section>
+
+    <section id="projects">
         <div class="projects">
             <h2>Projects</h2>
-            <div class="project">
-                <img src="{{ MEDIA_URL }}project1.png" alt="Description of Image">
-                <h3>Project 1</h3>
-                <p>Project Description</p>
+            <div class="column">
+                <div class="project-dets left">
+                    <h3>Chat Application</h3>
+                    <p>
+                        A real-time chat application enabling seamless communication between users with features like group chats and message sharing 
+                    </p>
+                    
+                    <img src="{% static 'Ellipse 1.png' %}">
+                </div>
+                <div class="project-dets right">
+                    <h3>Chat Application</h3>
+                    <p>
+                        A real-time chat application enabling seamless communication between users with features like group chats and message sharing 
+                    </p>
+                    <img src="{% static 'Ellipse 1.png' %}">
+                </div>
+                <div class="project-dets left">
+                    <h3>Chat Application</h3>
+                    <p>
+                        A real-time chat application enabling seamless communication between users with features like group chats and message sharing 
+                    </p>
+                    <img src="{% static 'Ellipse 1.png' %}">
+                </div>
             </div>
-            <div class="project">
-                <img src="{{ MEDIA_URL }}project2.png" alt="Description of Image">
-                <h3>Project 2</h3>
-                <p>Project Description</p>
-            </div>
-            <div class="project">
-                <img src="{{ MEDIA_URL }}project3.png" alt="Description of Image">
-                <h3>Project 3</h3>
-                <p>Project Description</p>
+            
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="experience">
+            <h2>Experience</h2>
+            <div class="column">
+                <div class="exp-dets">
+                    <h3>Software Engineer</h3>
+                    <p>
+                        Developed and maintained web applications for clients using React, Node.js, and MongoDB
+                    </p>
+                    <p>
+                        <i class="fas fa-calendar-alt"></i> 2020 - 2021
+                    </p>
+                </div>
+                <div class="exp-dets">
+                    <h3>Software Engineer</h3>
+                    <p>
+                        Developed and maintained web applications for clients using React, Node.js, and MongoDB
+                    </p>
+                    <p>
+                        <i class="fas fa-calendar-alt"></i> 2020 - 2021
+                    </p>
+                </div>
+                <div class="exp-dets">
+                    <h3>Software Engineer</h3>
+                    <p>
+                        Developed and maintained web applications for clients using React, Node.js, and MongoDB
+                    </p>
+                    <p>
+                        <i class="fas fa-calendar-alt"></i> 2020 - 2021
+                    </p>
+                </div>
             </div>
         </div>
     </section>
-    <section>
-        <div class="experience"></div>
-    </section>
-    <section>
-        <div class="skills"></div>
-    </section>
-    <section>
-        <div class="contact"></div>
-    </section>
     
+    
+    <section id="skills">
+        <div class="skills">
+            <h2>Skills</h2>
+            <!-- Skills content goes here -->
+            <div class="skill-row">
+                <div class="column">
+                    <h3>Front-End</h3>
+                    <ul>
+                        <li><i class="fab fa-html5"></i> HTML</li>
+                        <li><i class="fab fa-css3-alt"></i> CSS</li>
+                        <li><i class="fab fa-js"></i> JavaScript</li>
+                        <li><i class="fab fa-react"></i> React</li>
+                        <li><i class="fab fa-angular"></i> Angular</li>
+                        <li><i class="fab fa-vue"></i> Vue</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Back-End</h3>
+                    <ul>
+                        <li><i class="fab fa-node-js"></i> Node.js</li>
+                        <li><i class="fas fa-server"></i> Express</li>
+                        <li><i class="fas fa-code"></i> Dart</li>
+                        <li><i class="fas fa-python"></i> Python</li>
+                        <li><i class="fab fa-django"></i> Django</li>
+                        <li><i class="fas fa-flask"></i> Flask</li>
+                        <li><i class="fab fa-java"></i> Java</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Databases</h3>
+                    <ul>
+                        <li><i class="fas fa-database"></i> MySQL</li>
+                        <li><i class="fas fa-database"></i> PostgreSQL</li>
+                        <li><i class="fas fa-database"></i> MongoDB</li>
+                        <li><i class="fas fa-database"></i> SQLite</li>
+                        <li><i class="fas fa-database"></i> Oracle</li>
+                        <li><i class="fas fa-database"></i> SQL Server</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><i class="fab fa-git"></i> Git</li>
+                        <li><i class="fab fa-github"></i> GitHub</li>
+                        <li><i class="fab fa-gitlab"></i> GitLab</li>
+                        <li><i class="fab fa-jira"></i> Jira</li>
+                        <li><i class="fab fa-slack"></i> Slack</li>
+                        <li><i class="fab fa-zoom"></i> Zoom</li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact">
+            <h2>Contact</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
     
 </body>
 </html>
