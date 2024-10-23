@@ -8,15 +8,19 @@
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
 
     <style>
         html {
             scroll-behavior: smooth; /* Enables smooth scrolling */
         }
+        
     </style>
 </head>
 <body>
     <section id="home">
+        <canvas id="techCanvas"></canvas>
         <div class="line1"></div>
         <nav>
             <ul>
@@ -29,16 +33,15 @@
             </ul>
         </nav>
         <div class="intro">
-            <h1>Hi<br>
+            <h1>Hi,<br>
                 I'm <span>Peter Kimutai Kiptoo</span></h1>
             <p>Full-Stack Software Engineer</p>
-            <a href="#contact">Contact Me</a>
         </div>
         <button class="cvbutton">
             <a href="#">Download CV</a>
         </button>
         <button class="contacts">
-            <a href="#contact">Contact Me</a>
+            <a href="#contact">Connect With Me</a>
         </button>
         {% load static %}
         <img src="{% static 'LinkedIn.png' %}">
@@ -227,6 +230,70 @@
             </div>
         </div>
     </section>
+    <script>
+        let scene, camera, renderer, particles, particleMaterial;
+    
+        function initParticles() {
+            // Create scene
+            scene = new THREE.Scene();
+    
+            // Create camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+            camera.position.z = 200;
+    
+            // Create renderer and attach to canvas
+            renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('techCanvas'), alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+    
+            // Create particles
+            const particleCount = 1000; // Adjust to add more or fewer particles
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesArray = new Float32Array(particleCount * 3);
+    
+            for (let i = 0; i < particleCount; i++) {
+                particlesArray[i * 3] = (Math.random() - 0.5) * 800; // x position
+                particlesArray[i * 3 + 1] = (Math.random() - 0.5) * 800; // y position
+                particlesArray[i * 3 + 2] = (Math.random() - 0.5) * 800; // z position
+            }
+    
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(particlesArray, 3));
+    
+            // Particle material
+            particleMaterial = new THREE.PointsMaterial({
+                color: 0x550000,
+                size: 4,
+                blending: THREE.AdditiveBlending,
+                transparent: true
+            });
+    
+            // Create the particle system
+            particles = new THREE.Points(particlesGeometry, particleMaterial);
+            scene.add(particles);
+    
+            animateParticles();
+        }
+    
+        function animateParticles() {
+            requestAnimationFrame(animateParticles);
+    
+            // Rotate particles for a dynamic effect
+            particles.rotation.x += 0.0005;
+            particles.rotation.y += 0.001;
+    
+            // Render the scene
+            renderer.render(scene, camera);
+        }
+    
+        // Handle resizing of the window
+        window.addEventListener('resize', function () {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+    
+        // Initialize the particles when the page is ready
+        window.onload = initParticles;
+    </script>
     
     
 </body>
