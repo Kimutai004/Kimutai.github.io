@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portfolio</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
+</html>
+<body>
+    <section>
+        <div class="line1"></div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Experince</a></li>
+                <li><a href="#">Skills</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="intro">
+            <h1>Hi<br>
+                I'm <span>Peter Kimutai Kiptoo</span></h1>
+            <p>Full-Stack Software Engineer</p>
+            <a href="#">Contact Me</a>
+        </div>
+
+        <div class="row"></div>
+            <button class="cvbutton">
+            <a href="#">Download CV</a>
+            </button>
+            <button class="contact">
+            <a href="#">Contact Me</a>
+            </button>
+            <img src="{{ MEDIA_URL }}Github.png" alt="Description of Image">
+            <img src="{{ MEDIA_URL }}LinkedIn.png" alt="Description of Image">
+
+        </div>
+
+    </section>
+    <div class="rectangle8">
+
+
+    </div>
+
+    <section>
+        <div class="about">
+            <div class="line3"></div>
+            <h2>About Me</h2>
+            <div class="row">
+                <img src="{{ MEDIA_URL }}Github.png" alt="Description of Image" srcset="">
+            <p>I am a Full-Stack Software Engineer with a passion for developing web applications. I have experience in developing web applications using Django, Flask, and React. I am also proficient in using Git for version control and have experience in deploying applications to Heroku and Netlify. I am a fast learner and I am always eager to learn new technologies.I’m a Full -stack developer with expertie in TypeScript, React, NextJs, NodeJs and Dtabase  technologies (MongoDB, MYSQL, Firebase, MSSQL and PostgreSQL) utilizing PRISMA for efficient data access. 
+                proven ability to deliver user-centered web applications with a focus on intuitive experiences and user interaction
+                
+                Seeking for web developmentopportunities where I can leverage my skills to create meaningful connections between Products and Users
+                
+                So if you are interested, 
+                
+                Contact me</p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="projects">
+            <h2>Projects</h2>
+            <div class="project">
+                <img src="{{ MEDIA_URL }}project1.png" alt="Description of Image">
+                <h3>Project 1</h3>
+                <p>Project Description</p>
+            </div>
+            <div class="project">
+                <img src="{{ MEDIA_URL }}project2.png" alt="Description of Image">
+                <h3>Project 2</h3>
+                <p>Project Description</p>
+            </div>
+            <div class="project">
+                <img src="{{ MEDIA_URL }}project3.png" alt="Description of Image">
+                <h3>Project 3</h3>
+                <p>Project Description</p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="experience"></div>
+    </section>
+    <section>
+        <div class="skills"></div>
+    </section>
+    <section>
+        <div class="contact"></div>
+    </section>
+    
+    
+</body>
+</html>

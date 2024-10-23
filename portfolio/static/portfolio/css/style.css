@@ -1,0 +1,130 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styling the Navigation */
+nav {
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;              /* Use flexbox to align items in a row */
+    justify-content: center;    /* Center items horizontally */
+    padding: 0;
+    margin: 20px;
+}
+
+nav ul li {
+    background-color: #eb3737;    /* Background color for each square */
+    padding: 10px;             /* Space inside each square */
+    text-align: center;
+    flex: 0 1 100px;           /* Keep each square with a fixed width */
+    height: 50px;             
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    border-radius: 5px;        
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;           /* Font size for the links */
+}
+
+nav ul li:hover {
+    background-color: #666;    /* Change background on hover */
+    transition: background-color 0.3s;
+}
+.line1{
+    width: 610px;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    border: '1px black solid';
+    top: 0;
+    left: 0;
+    transform: rotate(0deg);
+    transition: transform 0.5s;
+}
+.intro{
+    text-align: center;
+    margin-top: 100px;
+    font-size: 32px;
+    font-family: 'inter';
+    word-wrap: break-word;
+    font-weight: 700;
+}
+.cvbutton{
+    width: 210px;
+    height: 41px;
+    background-color: #010101;
+    border-radius: 20;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 30%;
+    border-radius: 30px;
+
+}
+.cvbutton a {
+    color: white;
+}
+.contact{
+    width: 210px;
+    height: 41px;
+    background-color: #010101;
+    border-radius: 20;
+    text-align: center;
+    border-radius: 30px;
+
+}
+.contact a {
+    color: white;
+}
+.bodyback{
+    width: 1200;
+    height: 3661; 
+    background: 'black'
+}
+.about h2{
+    width: 122;
+    text-align: center;
+    color: 'white';
+    font-size: 20;
+    font-family: 'Inter';
+    font-weight: '700';
+    word-wrap: 'break-word';
+    margin-top: 20px;
+}
+.about img{
+    width: 305;
+    height: 303;
+    background: 'linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%)';
+    border-radius: 9999
+}
+.about p{
+    width: 625;
+    color: 'white';
+    font-size: 20; 
+    font-family: 'Inter';
+    font-weight: '700';
+    word-Wrap: 'break-word'
+}
+.line3{
+    width: 57;
+    height: 50;
+    color: #000;
+    transform: 'rotate(90deg)';
+    transform-origin: '0 0';
+    border: '9px white solid'
+}
+.rectangle8{
+    width: 1200;
+    height: 3661;
+    background: black
+}
