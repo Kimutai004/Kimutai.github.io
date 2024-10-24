@@ -5,50 +5,53 @@
     box-sizing: border-box;
 }
 
+/* ----------------------- NAVIGATION & HOME SECTION ----------------------- */
 
-/* Styling the Navigation */
+/* Navigation Styling */
 nav {
     padding: 10px;
 }
 
 nav ul {
-    list-style-type: none;
-    display: flex;              /* Use flexbox to align items in a row */
-    justify-content: center;    /* Center items horizontally */
+    list-style: none;
+    display: flex;
+    justify-content: center;
     padding: 0;
     margin: 20px;
 }
 
 nav ul li {
-    background-color: #eb3737;    /* Background color for each square */
-    padding: 10px;             /* Space inside each square */
+    background-color: #eb3737;
+    padding: 10px;
     text-align: center;
-    flex: 0 1 100px;           /* Keep each square with a fixed width */
-    height: 50px;             
+    flex: 0 1 100px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 5px;
-    border-radius: 5px;        
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 16px;           /* Font size for the links */
+    font-size: 16px;
 }
 
 nav ul li:hover {
-    background-color: #666;    /* Change background on hover */
-    transition: background-color 0.3s;
+    background-color: #666;
 }
+
+/* Home Section */
 #home {
     position: relative;
     width: 100%;
     height: 100vh;
-    overflow: hidden;
-    background-color: #ffffff; /* Dark background for contrast */
+    background-color: #ffffff;
     z-index: 1;
+    overflow: hidden;
 }
 
 canvas {
@@ -58,398 +61,272 @@ canvas {
     width: 100%;
     height: 100%;
     z-index: 0;
-
 }
-.line1{
+
+.line1 {
     width: 610px;
     height: 2px;
     background-color: #fff;
     position: absolute;
-    border: '1px black solid';
     top: 0;
     left: 0;
     transform: rotate(0deg);
     transition: transform 0.5s;
 }
-.intro{
+
+.intro {
     text-align: center;
-    margin-top: 100px;
     font-size: 32px;
-    font-family: inter;
-    word-wrap: break-word;
+    margin-top: 100px;
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
+    word-wrap: break-word;
 }
-.cvbutton{
-    width: 210px;
-    list-style-type: none;
+
+/* Parent container for the buttons and icons */
+.center-container {
+    display: flex;
+    flex-direction: row;    /* Stack buttons and icons vertically */
+    align-items: center;       /* Center the content horizontally */
+    justify-content: center;   /* Center the content vertically */
+    text-align: center;        /* Ensure text is centered */
+    padding: 20px;
+    flex-wrap: wrap;           /* Allow items to wrap onto the next line */
+}
+
+/* Common Button Styles */
+.cvbutton, .contacts {
+    text-align: center;
+    list-style: none;
     height: 41px;
     background-color: #010101;
-    border-radius: 20;
+    width: 200px;                 /* Fixed width for buttons */
+    margin: 10px;                 /* Margin around buttons for spacing */
+    border-radius: 30px;
+    padding: 10px 20px;           /* Add padding for touch targets */
+    display: inline-block;        /* Ensure block-like behavior */
+    transition: background-color 0.3s; /* Smooth background color change */
+}
+
+.cvbutton a, .contacts a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+/* Styling for the icons */
+.center-container img {
+    width: 40px;                  /* Adjust the size of the icons */
+    height: auto;
+    margin: 10px;                /* Spacing between the icons */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .cvbutton, .contacts {
+        width: 100%;              /* Full width on smaller screens */
+        max-width: 300px;         /* Max width to prevent stretching too much */
+        padding: 12px 0;          /* Adjust padding for touch-friendly sizes */
+    }
+}
+
+@media (max-width: 480px) {
+    .cvbutton, .contacts {
+        width: 100%;              /* Full width for mobile devices */
+        max-width: 250px;         /* Slightly smaller width for small screens */
+        padding: 10px;            /* Reduce padding for smaller buttons */
+    }
+    
+    .center-container img {
+        width: 30px;              /* Smaller icons on mobile */
+        margin: 5px;              /* Adjust margin for smaller screens */
+    }
+}
+.social-links {
+    display: flex;
+    justify-content: center; /* Center the images */
+    margin: 20px 0; /* Add some margin */
+}
+
+.social-links img {
+    margin: 0 10px; /* Space between icons */
+    transition: transform 0.2s; /* Animation on hover */
+}
+
+.social-links img:hover {
+    transform: scale(1.1); /* Scale effect on hover */
+}
+
+
+/* ----------------------- ABOUT SECTION ----------------------- */
+
+#about{
+    background-color: #030303;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+}
+.about h2 {
     text-align: center;
+    color: white;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
     margin-top: 30px;
-    margin-left: 30%;
-    border-radius: 30px;
-
-}
-.cvbutton a {
-    color: white;
-    list-style-type: none;
-}
-.contacts{
-    width: 210px;
-    list-style-type: none;
-    height: 41px;
-    background-color: #010101;
-    border-radius: 20;
-    text-align: center;
-    border-radius: 30px;
-
-}
-.contacts a {
-    color: white;
 }
 
-#about, #projects, #experience, #skills, #contact {
-    background-color: #000000; /* Black background */
-    color: white; /* Adjust text color to white for better visibility */
-}
-
-/* Optional: Add padding for better layout */
-#about, #projects, #experience, #skills, #contact {
+.about .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     padding: 20px;
 }
 
-/* Make sure text content is clearly visible */
-#about p, #projects p, #experience p, #skills p, #contact p {
-    color: #ffffff; /* White text */
-}
-
-#about h2, #projects h2, #experience h2, #skills h2, #contact h2 {
-    color: #ffffff; /* Optional: Add a red color for section headings */
-}
-
-.about h2{
-    width: 122;
-    text-align: center;
-    color: 'white';
-    font-size: 20;
-    font-family: 'Inter';
-    font-weight: '700';
-    word-wrap: 'break-word';
-    margin-top: 30px;
-}
-.about .row {
-    display: flex;
-    align-items: center; 
-    margin: auto;
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-    justify-content: center; /* Center items in the row */
-    padding: 20px; /* Add padding for spacing */
-}
-
 .about .row img {
-    width: 30%; /* Set width of the image relative to the container */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 50%; /* Make the image circular */
-    margin: 10px; /* Space around the image */
+    width: 30%;
+    height: auto;
+    border-radius: 50%;
+    margin: 10px 0 50px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .about .row p {
-    color: rgb(0, 0, 0); /* Text color */
-    width: 60%; /* Set width of the text relative to the container */
-    font-size: 1rem; /* Use rem for responsive font size */
-    font-family: 'Inter', sans-serif; /* Font family */
-    line-height: 1.5; /* Line height for readability */
-    margin: 10px; /* Space around the text */
+    color: #fafafa;
+    width: 50%;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    margin: 10px;
+    margin-left: 20px;
 }
 
-/* Media Query for Smaller Screens */
+/* Responsive About Section */
 @media (max-width: 768px) {
     .about .row {
-        flex-direction: column; /* Stack image and text vertically on smaller screens */
-        align-items: center; /* Center items */
+        flex-direction: column;
+        text-align: center;
     }
 
     .about .row img {
-        width: 80%; /* Increase image width for smaller screens */
-        height: auto; /* Maintain aspect ratio */
+        width: 80%;
     }
 
     .about .row p {
-        width: 90%; /* Increase text width for smaller screens */
-        text-align: center; /* Center text */
+        width: 90%;
     }
+
 }
 
-.line3{
-    width: 57;
-    height: 50;
-    color: #000;
-    transform: 'rotate(90deg)';
-    transform-origin: '0 0';
-    border: '9px white solid'
-}
-.rectangle8{
-    width: 1200;
-    height: 3661;
-    background: black
-}
-/* General styles for the projects section */
-#projects {
-    padding: 40px 20px; /* Spacing around the section */
+.line3 {
+    width: 57px;
+    height: 50px;
+    border: 9px black solid;
+    transform: rotate(90deg);
+    transform-origin: 0 0;
 }
 
-.projects h2 {
-    text-align: center;
-    color: #333; /* Darker text color */
-    font-size: 28px; /* Increased font size for heading */
-    font-family: 'Inter', sans-serif; /* Using Inter font */
-    font-weight: 700; /* Bold weight */
-    margin-bottom: 30px; /* Space below the heading */
+/* ----------------------- PROJECTS SECTION ----------------------- */
+#projects{
+    background-color: #0e0e0e;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    color: wheat;
+    
 }
-
-.projects .column {
-    display: flex; /* Flexbox for layout */
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-    gap: 20px; /* Space between items */
-}
-
-/* Project details container */
+/* Project Details */
 .project-dets {
-    width: 100%; /* Full width on small screens */
-    max-width: 800px; /* Max width for larger screens */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    display: flex; /* Flexbox for inner layout */
-    flex-direction: row; /* Default to row layout */
-    align-items: flex-start; /* Align items at the start */
-    padding: 20px; /* Inner padding */
-    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition effects */
+    width: 100%;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-top: 30px;
 }
 
-/* Hover effect for project details */
 .project-dets:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
-
-
-/* Title and paragraph styles */
 .project-dets h3 {
-    color: #333; /* Dark text color for titles */
-    font-size: 20px; /* Increased font size for titles */
-    font-family: 'Inter', sans-serif; /* Using Inter font */
-    font-weight: 600; /* Medium weight */
-    margin-bottom: 10px; /* Space below titles */
+    color: #ffffff;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .project-dets p {
-    color: #555; /* Darker grey for paragraph text */
-    font-size: 16px; /* Font size for paragraphs */
-    font-family: 'Inter', sans-serif; /* Using Inter font */
-    flex: 1; /* Allow paragraph to grow */
-    margin: 0 10px; /* Space around the paragraph */
+    color: #ffffff;
+    font-size: 16px;
+    flex: 1;
+    margin: 0 10px;
 }
 
-/* Image styles */
 .project-dets img {
-    width: 100%; /* Responsive full width */
-    max-width: 250px; /* Max width for images */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 10px; /* Rounded corners for images */
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 10px;
 }
 
-/* Media Queries for Responsive Design */
+/* Responsive Projects Section */
 @media (max-width: 800px) {
     .project-dets {
-        flex-direction: column; /* Stack content vertically */
-        padding: 15px; /* Adjust padding */
-        align-items: center; /* Center items in column layout */
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
     }
 
     .project-dets img {
-        max-width: 100%; /* Full width for images */
-        height: auto; /* Maintain aspect ratio */
-        margin-bottom: 15px; /* Space below images */
-    }
-
-    .project-dets h3 {
-        order: 1; /* Ensure title appears after the image */
-        margin-bottom: 5px; /* Adjust margin for better spacing */
-    }
-
-    .project-dets p {
-        order: 2; /* Ensure paragraph appears after the image */
+        max-width: 100%;
+        margin-bottom: 15px;
     }
 }
 
 @media (max-width: 480px) {
-    .projects h2 {
-        font-size: 24px; /* Smaller font size for headings */
-    }
-
-    .project-dets h3 {
-        font-size: 18px; /* Smaller font size for project titles */
+    .projects h2, .project-dets h3 {
+        font-size: 18px;
     }
 
     .project-dets p {
-        font-size: 14px; /* Smaller font size for project descriptions */
+        font-size: 14px;
     }
 }
 
+/* ----------------------- EXPERIENCE SECTION ----------------------- */
+#experience{
+    background-color: #000000;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+}
+#skills{
+    background-color: #000000;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+}
+.experience h2, .skills {
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    margin-top: 20px;
+    color: white;
+}
 
-.experience h2{
-    width: 122;
-    text-align: center;
-    color: rgb(0, 0, 0);
-    font-size: 20;
-    font-family: 'Inter';
-    font-weight: 700;
-    word-wrap: break-word;
-    margin-top: 20px;
-}
-.skills{
-    width: 122;
-    text-align: center;
-    color: rgb(0, 0, 0);
-    font-size: 20;
-    font-family: 'Inter';
-    font-weight: 700;
-    word-wrap: break-word;
-    margin-top: 20px;
-}
 .skill-row {
-    display: flex; /* Enables Flexbox layout */
-    justify-content: space-around; /* Distributes columns evenly with space in between */
-    flex-wrap: wrap; /* Allows wrapping if the screen size is too small */
-    gap: 20px; /* Adds space between the columns */
-    padding: 20px 0; /* Adds vertical padding */
-}
-
-.column {
-    flex: 1; /* Makes each column take up equal space */
-    min-width: 200px; /* Sets a minimum width for the columns */
-    padding: 10px;
-    text-align: center; /* Center-aligns the text */
-    background-color: #f5f5f5; /* Adds background color for visibility */
-    border-radius: 8px; /* Adds rounded corners */
-}
-
-.column h3 {
-    margin-bottom: 10px; /* Adds space between the heading and the list */
-}
-
-.column ul {
-    list-style-type: none; /* Removes bullet points from the list */
-    padding: 0;
-}
-
-.column ul li {
-    margin-bottom: 8px; /* Adds space between list items */
-    font-size: 16px; /* Adjusts font size */
-}
-.contact {
-    display: flex; /* Use flexbox for layout */
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center the items horizontally */
-    text-align: center; /* Center the text inside */
-    margin: 20px 0; /* Add some margin for spacing */
-}
-
-.contact-container {
-    display: flex; /* Align form and contact details side by side */
-    justify-content: space-between; /* Space between the form and contact details */
-    width: 100%; /* Full width */
-    max-width: 800px; /* Maximum width for the container */
-    margin: 0 auto; /* Center the container */
-}
-
-.contact-form {
-    width: 50%; /* Set width for the form */
-    margin-right: 20px; /* Space between form and contact details */
-}
-
-.contact-details {
-    width: 50%; /* Set width for contact details */
-    text-align: left; /* Left align text in contact details */
-    background: #D9D9D9; /* Background color */
-    padding: 20px; /* Padding for contact details */
-    border-radius: 10px; /* Rounded corners */
-}
-
-/* Optional: Additional styling for form and inputs */
-.form-group {
-    margin-bottom: 15px; /* Space between form fields */
-}
-
-.form-group label {
-    display: block; /* Block label for better alignment */
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%; /* Full width for inputs */
-    padding: 10px; /* Padding inside inputs */
-    border-radius: 5px; /* Rounded corners for inputs */
-    border: 1px solid #ccc; /* Border for inputs */
-}
-
-/* Media Queries for Responsive Design */
-@media (max-width: 768px) {
-    .contact-container {
-        flex-direction: column; /* Stack form and contact details vertically */
-        align-items: center; /* Center items horizontally */
-    }
-
-    .contact-form,
-    .contact-details {
-        width: 100%; /* Full width on smaller screens */
-        margin-right: 0; /* Remove right margin */
-        margin-bottom: 20px; /* Add bottom margin for spacing */
-    }
-}
-
-@media (max-width: 480px) {
-    .contact {
-        padding: 10px; /* Add padding to the contact section */
-    }
-
-    .contact-details {
-        padding: 15px; /* Adjust padding for smaller screens */
-    }
-}
-
-.experience {
-    position: relative; /* Allow positioning of child elements */
-    text-align: center; /* Center the title */
-}
-
-.boxes {
-    display: flex; /* Flexbox for alignment */
-    justify-content: space-between; /* Space between the boxes */
-    position: relative; /* Allow positioning of child elements */
-    margin-top: 20px; /* Space above the boxes */
-}
-
-.box {
-    width: 200px; /* Set width of the boxes */
-    height: 100px; /* Set height of the boxes */
-    background-color: #D9D9D9; /* Background color for boxes */
-    border-radius: 10px; /* Rounded corners */
-    padding: 10px; /* Padding inside the box */
-    display: flex; /* Flexbox for content inside the box */
-    flex-direction: column; /* Stack content vertically */
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
-}
-
-.experience {
-    display: flex; /* Use flexbox for layout */
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center the items horizontally */
-    text-align: center; /* Center the text inside */
-    margin: 20px 0; /* Add some margin for spacing */
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 0;
 }
 
 .line6 {
@@ -463,70 +340,211 @@ canvas {
 }
 
 .exp-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     margin-top: 30px;
-    display: flex; /* Use flexbox for the row layout */
-    justify-content: space-between; /* Space out columns */
-    width: 100%; /* Full width to accommodate all columns */
-    position: relative; /* Relative positioning for the line */
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    position: relative;
 }
 
 .exp-row .column {
-    width: 300px; /* Set width for each column */
-    margin: 0 20px; /* Margin for spacing */
-    background: #D9D9D9; /* Background color */
-    border-radius: 10px; /* Rounded corners */
-    padding: 20px; /* Padding inside the boxes */
-    position: relative; /* For z-index manipulation if needed */
+    width: 300px;
+    margin: 0 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
 }
 
-.left {
-    margin-right: auto; /* Push left columns to the left */
-}
-
-.right {
-    margin-left: auto; /* Push right columns to the right */
-}
-
-/* Optional: Add some styling for the header and paragraphs */
 .exp-row .column h3 {
-    margin: 0; /* Remove default margin for heading */
-    font-size: 20px; /* Font size for the heading */
+    font-size: 20px;
+    color: #f5f5f5;
 }
 
 .exp-row .column p {
-    margin: 5px 0; /* Space between paragraphs */
-    font-size: 16px; /* Font size for paragraphs */
+    margin: 5px 0;
+    font-size: 16px;
+    color: #f5f5f5;
 }
+.exp-row .column ul{
+    color: #f5f5f5;
+    padding: 10px;
+}
+.skill-row .column{
+    width: 200px;
+    margin: 0 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
+.skill-row .column ul{
+    color: #f5f5f5;
+    padding: 10px;
+    list-style: none;
 
-/* Media Queries for Responsive Design */
+}
+/* Responsive Experience Section */
 @media (max-width: 768px) {
     .exp-row {
-        flex-direction: column; /* Stack columns vertically on small screens */
-        align-items: center; /* Center items */
+        flex-direction: column;
+        align-items: center;
     }
 
     .exp-row .column {
-        width: 100%; /* Full width for columns on small screens */
-        margin: 10px 0; /* Margin for spacing */
+        width: 100%;
+        margin: 10px 0;
     }
 
     .line6 {
-        height: 100px; /* Adjust line height on smaller screens */
+        height: 100px;
     }
 }
 
 @media (max-width: 480px) {
     .line6 {
-        height: 80px; /* Further adjust line height for very small screens */
+        height: 80px;
     }
 
     .exp-row .column h3 {
-        font-size: 18px; /* Smaller font size for headings */
+        font-size: 18px;
     }
 
     .exp-row .column p {
-        font-size: 14px; /* Smaller font size for paragraphs */
+        font-size: 14px;
     }
 }
 
+/* ----------------------- CONTACT SECTION ----------------------- */
+
+/* General contact section styles */
+#contact {
+    background-color: #f5f5f5; /* Light grey background */
+    padding: 50px 0;          /* Padding around the section */
+    display: flex;
+    justify-content: center;
+}
+
+.contact {
+    max-width: 1200px;         /* Limit the container width */
+    width: 100%;               /* Full width */
+    padding: 20px;
+    background-color: #ffffff; /* White background for content */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    overflow: hidden;
+}
+
+.contact h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Container for form and contact details */
+.contact-container {
+    display: flex;
+    justify-content: space-between; /* Split into two columns */
+    gap: 40px;                      /* Space between columns */
+    flex-wrap: wrap;                /* Allow wrap on smaller screens */
+    padding: 20px 0;
+}
+
+/* Contact form styles */
+.contact-form {
+    flex: 1;                        /* Take full space of the column */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+}
+
+button[type="submit"] {
+    background-color: #333;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #555;
+}
+
+/* Contact details container */
+.contact-details {
+    display: flex;
+    flex-direction: column;        /* Arrange contact details vertically */
+    align-items: flex-start;       /* Align content to the start of the container */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Each contact detail (icon + text) */
+.contact-details p {
+    display: flex;
+    align-items: center;           /* Vertically align icon and text */
+    margin: 10px 0;                /* Spacing between each contact detail */
+    font-size: 1.1rem;
+}
+
+/* Icon styles */
+.contact-details img {
+    width: 24px;                   /* Set icon size */
+    height: auto;
+    margin-right: 10px;            /* Space between icon and text */
+}
+
+/* Link styles */
+.contact-details a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.contact-details a:hover {
+    color: #555;                   /* Change color on hover */
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+    .contact-details {
+        align-items: center;        /* Center items on smaller screens */
+    }
+
+    .contact-details p {
+        justify-content: center;    /* Center the icon and text */
+    }
+}
+
+
+em{
+    color: #eb3737;
+}

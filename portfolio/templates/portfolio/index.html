@@ -37,15 +37,24 @@
                 I'm <span>Peter Kimutai Kiptoo</span></h1>
             <p>Full-Stack Software Engineer</p>
         </div>
-        <button class="cvbutton">
-            <a href="#">Download CV</a>
-        </button>
-        <button class="contacts">
-            <a href="#contact">Connect With Me</a>
-        </button>
-        {% load static %}
-        <img src="{% static 'LinkedIn.png' %}">
-        <img src="{% static 'GitHub.png' %}">
+        <div class="center-container ">
+            <button class="cvbutton">
+                <a href="{% static 'Resume.pdf' %}" download>Download CV</a>
+            </button>
+            <button class="contacts">
+                <a href="#contact">Connect With Me</a>
+            </button>
+            {% load static %}
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/peter-kimutai-692016222/" target="_blank">
+                    <img src="{% static 'LinkedIn.png' %}" alt="LinkedIn" style="width: 40px; height: 40px;">
+                </a>
+                <a href="https://github.com/Kimutai004" target="_blank">
+                    <img src="{% static 'GitHub.png' %}" alt="GitHub" style="width: 40px; height: 40px;">
+                </a>
+            </div>
+            
+        </div>
     </section>
 
 
@@ -110,7 +119,7 @@
             <div class="line6"></div>
             <div class="exp-row">
                 <div class="column left">
-                    <h3>Software Engineer</h3>
+                    <h3><em>Software Engineer</em></h3>
                     <p>Company Name, Location</p>
                     <p>Jan 2020 - Present</p>
                     <p>Responsibilities:</p>
@@ -121,7 +130,7 @@
                     </ul>
                 </div>
                 <div class="column right">
-                    <h3>Front-End Developer</h3>
+                    <h3><em>Front-End Developer</em></h3>
                     <p>Company Name, Location</p>
                     <p>Jan 2018 - Dec 2019</p>
                     <p>Responsibilities:</p>
@@ -132,7 +141,7 @@
                     </ul>
                 </div>
                 <div class="column left">
-                    <h3>Intern</h3>
+                    <h3><em>Intern</em></h3>
                     <p>Company Name, Location</p>
                     <p>Jan 2017 - Dec 2017</p>
                     <p>Responsibilities:</p>
@@ -146,14 +155,13 @@
         </div>
     </section>
     
-    
     <section id="skills">
         <div class="skills">
             <h2>Skills</h2>
             <!-- Skills content goes here -->
             <div class="skill-row">
                 <div class="column">
-                    <h3>Front-End</h3>
+                    <h3><em>Front-End</em></h3>
                     <ul>
                         <li><i class="fab fa-html5"></i> HTML</li>
                         <li><i class="fab fa-css3-alt"></i> CSS</li>
@@ -164,7 +172,7 @@
                     </ul>
                 </div>
                 <div class="column">
-                    <h3>Back-End</h3>
+                    <h3><em>Back-End</em></h3>
                     <ul>
                         <li><i class="fab fa-node-js"></i> Node.js</li>
                         <li><i class="fas fa-server"></i> Express</li>
@@ -176,18 +184,19 @@
                     </ul>
                 </div>
                 <div class="column">
-                    <h3>Databases</h3>
+                    <h3><em>Databases</em></h3>
                     <ul>
                         <li><i class="fas fa-database"></i> MySQL</li>
                         <li><i class="fas fa-database"></i> PostgreSQL</li>
                         <li><i class="fas fa-database"></i> MongoDB</li>
+                        <li><i class="fas fa-database"></i> Firebase</li>
                         <li><i class="fas fa-database"></i> SQLite</li>
                         <li><i class="fas fa-database"></i> Oracle</li>
                         <li><i class="fas fa-database"></i> SQL Server</li>
                     </ul>
                 </div>
                 <div class="column">
-                    <h3>Tools</h3>
+                    <h3><em>Tools</em></h3>
                     <ul>
                         <li><i class="fab fa-git"></i> Git</li>
                         <li><i class="fab fa-github"></i> GitHub</li>
@@ -223,9 +232,11 @@
                 </form>
                 <div class="contact-details">
                     <h3>Contact Details</h3>
-                    <p><strong>Phone:</strong> (123) 456-7890</p>
-                    <p><strong>Email:</strong> contact@example.com</p>
-                    <p><strong>Address:</strong> 123 Main Street, Anytown, USA</p>
+                    <p><img src="{% static 'Phone.png' %}">+254742744884 </p>
+                    <p><img src="{% static 'Mail.png' %}" > peterkimutai004@gmail.com</p>
+                    <p><img src="{% static 'Upwork.png' %}" ><a href="https://www.upwork.com/freelancers/~01ecc9ef82cdbbe06a?mp_source=share">Upwork</a></p>
+                    <p><img src="{% static 'Fiverr.png' %}" ><a href="https://www.fiverr.com/kimutai004?up_rollout=true">Fiverr</a></p>
+                    
                 </div>
             </div>
         </div>
