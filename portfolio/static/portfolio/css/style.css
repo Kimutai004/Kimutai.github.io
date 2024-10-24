@@ -424,7 +424,7 @@ canvas {
 }
 
 .contact {
-    max-width: 1200px;         /* Limit the container width */
+    max-width: 800px;         /* Limit the container width */
     width: 100%;               /* Full width */
     padding: 20px;
     background-color: #ffffff; /* White background for content */
