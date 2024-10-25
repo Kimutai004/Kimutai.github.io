@@ -215,7 +215,8 @@
         <div class="contact">
             <h2>Contact</h2>
             <div class="contact-container">
-                <form id="contactForm" class="contact-form">
+                <form id="contactForm" class="contact-form" method="POST">
+                    {% csrf_token %}
                     <div class="form-group">
                         <label for="name">Name:</label>
                         <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -230,6 +231,7 @@
                     </div>
                     <button type="submit">Send Message</button>
                 </form>
+                
                 <div class="contact-details">
                     <h3>Contact Details</h3>
                     <p><img src="{% static 'Phone.png' %}">+254742744884 </p>
@@ -243,21 +245,31 @@
     
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script type="text/javascript">
-    (function() {
-        emailjs.init(gBHgpoqoAIN14BL2i);
-    })();
-    
     document.getElementById('contactForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        // Send form data to EmailJS
-        emailjs.sendForm(service_i9loild, template_1cj49pm, this)
-        .then(function() {
-            alert('Message sent successfully!');
-        }, function(error) {
-            alert('Failed to send message: ' + JSON.stringify(error));
-        });
+    event.preventDefault();
+    
+    const formData = new FormData(this);
+
+    fetch('/contact-form/', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-CSRFToken': formData.get('csrfmiddlewaretoken'),
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message) {
+            alert(data.message);
+        } else {
+            alert('Failed to send message: ' + JSON.stringify(data));
+        }
+    })
+    .catch(error => {
+        alert('Failed to send message: ' + JSON.stringify(error));
     });
+});
+
     </script>
 
     <script>
