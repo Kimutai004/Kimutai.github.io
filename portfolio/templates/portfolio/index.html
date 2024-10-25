@@ -9,11 +9,10 @@
     <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-
+    
     <style>
         html {
-            scroll-behavior: smooth; /* Enables smooth scrolling */
+            scroll-behavior: smooth; 
         }
         
     </style>
@@ -23,7 +22,8 @@
         <canvas id="techCanvas"></canvas>
         <div class="line1"></div>
         <nav>
-            <ul>
+            <button id="navToggle" class="nav-toggle">☰</button>
+            <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -39,8 +39,8 @@
         </div>
         <div class="center-container ">
             <button class="cvbutton">
-                <a href="{% static 'Resume.pdf' %}" download>Download CV</a>
-            </button>
+                <a href="{% static 'Resume.pdf' %}" target="_blank">Download CV</a>
+            
             <button class="contacts">
                 <a href="#contact">Connect With Me</a>
             </button>
@@ -215,7 +215,7 @@
         <div class="contact">
             <h2>Contact</h2>
             <div class="contact-container">
-                <form class="contact-form">
+                <form id="contactForm" class="contact-form">
                     <div class="form-group">
                         <label for="name">Name:</label>
                         <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -236,76 +236,130 @@
                     <p><img src="{% static 'Mail.png' %}" > peterkimutai004@gmail.com</p>
                     <p><img src="{% static 'Upwork.png' %}" ><a href="https://www.upwork.com/freelancers/~01ecc9ef82cdbbe06a?mp_source=share">Upwork</a></p>
                     <p><img src="{% static 'Fiverr.png' %}" ><a href="https://www.fiverr.com/kimutai004?up_rollout=true">Fiverr</a></p>
-                    
                 </div>
             </div>
         </div>
     </section>
-    <script>
-        let scene, camera, renderer, particles, particleMaterial;
     
-        function initParticles() {
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+    (function() {
+        emailjs.init(gBHgpoqoAIN14BL2i);
+    })();
+    
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Send form data to EmailJS
+        emailjs.sendForm(service_i9loild, template_1cj49pm, this)
+        .then(function() {
+            alert('Message sent successfully!');
+        }, function(error) {
+            alert('Failed to send message: ' + JSON.stringify(error));
+        });
+    });
+    </script>
+
+    <script>
+        let scene, camera, renderer, particles = [], bubbleMaterial, velocities = [];
+        
+        function initBubbles() {
             // Create scene
             scene = new THREE.Scene();
-    
+        
             // Create camera
             camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
             camera.position.z = 200;
-    
+        
             // Create renderer and attach to canvas
             renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('techCanvas'), alpha: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
-    
-            // Create particles
-            const particleCount = 1000; // Adjust to add more or fewer particles
-            const particlesGeometry = new THREE.BufferGeometry();
-            const particlesArray = new Float32Array(particleCount * 3);
-    
-            for (let i = 0; i < particleCount; i++) {
-                particlesArray[i * 3] = (Math.random() - 0.5) * 800; // x position
-                particlesArray[i * 3 + 1] = (Math.random() - 0.5) * 800; // y position
-                particlesArray[i * 3 + 2] = (Math.random() - 0.5) * 800; // z position
-            }
-    
-            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(particlesArray, 3));
-    
-            // Particle material
-            particleMaterial = new THREE.PointsMaterial({
-                color: 0x550000,
-                size: 4,
-                blending: THREE.AdditiveBlending,
-                transparent: true
+        
+            // Create bubble material
+            bubbleMaterial = new THREE.MeshPhongMaterial({
+                color: 0x66ccff,  // Light blue
+                transparent: true,
+                opacity: 0.6,
+                shininess: 100,
+                reflectivity: 1,
             });
-    
-            // Create the particle system
-            particles = new THREE.Points(particlesGeometry, particleMaterial);
-            scene.add(particles);
-    
-            animateParticles();
+        
+            // Create bubbles
+            const bubbleCount = 200; // Adjust for more or fewer bubbles
+            for (let i = 0; i < bubbleCount; i++) {
+                // Each bubble will have a random size between 2 and 6
+                const bubbleGeometry = new THREE.SphereGeometry(Math.random() * 4 + 2, 32, 32);
+                const bubble = new THREE.Mesh(bubbleGeometry, bubbleMaterial);
+        
+                // Randomize bubble position
+                bubble.position.set(
+                    (Math.random() - 0.5) * 800,  // x position
+                    (Math.random() - 0.5) * 800,  // y position
+                    (Math.random() - 0.5) * 800   // z position
+                );
+        
+                // Store bubble
+                particles.push(bubble);
+                scene.add(bubble);
+        
+                // Assign random velocity to each bubble (for motion)
+                velocities.push({
+                    x: (Math.random() - 0.5) * 0.5,  // Adjust speed in x direction
+                    y: (Math.random() - 0.5) * 0.5,  // Adjust speed in y direction
+                    z: (Math.random() - 0.5) * 0.5   // Adjust speed in z direction
+                });
+            }
+        
+            // Add light for the bubbles to reflect
+            const light = new THREE.PointLight(0xffffff, 1);
+            light.position.set(200, 200, 200);
+            scene.add(light);
+        
+            animateBubbles();
         }
+        
+        function animateBubbles() {
+            requestAnimationFrame(animateBubbles);
+        
+            // Move each bubble and rotate for dynamic effect
+            particles.forEach((bubble, index) => {
+                // Apply velocity to bubble's position
+                bubble.position.x += velocities[index].x;
+                bubble.position.y += velocities[index].y;
+                bubble.position.z += velocities[index].z;
     
-        function animateParticles() {
-            requestAnimationFrame(animateParticles);
+                // Rotate each bubble
+                bubble.rotation.x += 0.005;
+                bubble.rotation.y += 0.005;
     
-            // Rotate particles for a dynamic effect
-            particles.rotation.x += 0.0005;
-            particles.rotation.y += 0.001;
-    
+                // Reset bubble's position if it goes out of bounds
+                if (bubble.position.x > 400 || bubble.position.x < -400) velocities[index].x *= -1;
+                if (bubble.position.y > 400 || bubble.position.y < -400) velocities[index].y *= -1;
+                if (bubble.position.z > 400 || bubble.position.z < -400) velocities[index].z *= -1;
+            });
+        
             // Render the scene
             renderer.render(scene, camera);
         }
-    
+        
         // Handle resizing of the window
         window.addEventListener('resize', function () {
             renderer.setSize(window.innerWidth, window.innerHeight);
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
         });
-    
-        // Initialize the particles when the page is ready
-        window.onload = initParticles;
+        
+        
+        window.onload = initBubbles;
     </script>
-    
+    <script>
+        document.getElementById('navToggle').addEventListener('click', function() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        });
+
+    </script>
+
     
 </body>
 </html>
