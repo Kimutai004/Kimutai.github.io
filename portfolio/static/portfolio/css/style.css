@@ -319,7 +319,7 @@ canvas {
 }
 .project-dets h3 {
     color: #ffffff;
-    font-size: 20px;
+    font-size: 40px;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     margin-bottom: 10px;
@@ -330,11 +330,13 @@ canvas {
     font-size: 16px;
     flex: 1;
     margin: 0 10px;
+    width: 50%;
 }
 
 .project-dets img {
+    flex-shrink: 0;
     width: 100%;
-    max-width: 250px;
+    max-width: 500px;
     height: auto;
     border-radius: 10px;
 }
@@ -348,6 +350,7 @@ canvas {
     }
 
     .project-dets img {
+        margin-top: 40px;
         max-width: 100%;
         margin-bottom: 15px;
     }
